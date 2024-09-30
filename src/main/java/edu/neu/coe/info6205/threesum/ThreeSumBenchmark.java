@@ -1,6 +1,7 @@
 package edu.neu.coe.info6205.threesum;
 
 import edu.neu.coe.info6205.util.Benchmark_Timer;
+import edu.neu.coe.info6205.util.Stopwatch;
 import edu.neu.coe.info6205.util.TimeLogger;
 import edu.neu.coe.info6205.util.Utilities;
 
@@ -33,9 +34,39 @@ public class ThreeSumBenchmark {
     }
 
     private void benchmarkThreeSum(final String description, final Consumer<int[]> function, int n, final TimeLogger[] timeLoggers) {
-        if (description.equals("ThreeSumCubic") && n > 4000) return;
-        // TO BE IMPLEMENTED shall I create a class?
-throw new RuntimeException("implementation missing");
+        //if (description.equals("ThreeSumCubic") && n > 4000) return;
+        // TO BE IMPLEMENTED
+
+        int[] ints= supplier.get();
+        if(description.equals("ThreeSumQuadratic")){
+            Stopwatch stopwatch=new Stopwatch();
+            new ThreeSumQuadratic(ints).getTriples();
+
+            System.out.println(description + ":"+ stopwatch.lap());
+        }
+        else if (description.equals("ThreeSumQuadrithmic")){
+            Stopwatch stopwatch=new Stopwatch();
+            new ThreeSumQuadrithmic(ints).getTriples();
+            System.out.println(description + ":"+ stopwatch.lap());
+
+        }
+        else if (description.equals("ThreeSumQuadraticWithCalipers")){
+            Stopwatch stopwatch=new Stopwatch();
+            new ThreeSumQuadraticWithCalipers(ints).getTriples();
+            System.out.println(description + ":"+ stopwatch.lap());
+
+        }else if (description.equals("ThreeSumCubic")){
+            Stopwatch stopwatch=new Stopwatch();
+            new ThreeSumCubic(ints).getTriples();
+            System.out.println(description + ":"+ stopwatch.lap());
+        }
+
+
+
+
+
+
+//throw new RuntimeException("implementation missing");
     }
 
     private final static TimeLogger[] timeLoggersCubic = {
