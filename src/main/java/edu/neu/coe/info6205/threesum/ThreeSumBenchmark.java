@@ -43,19 +43,15 @@ public class ThreeSumBenchmark {
             new ThreeSumQuadratic(ints).getTriples();
 
             System.out.println(description + ":"+ stopwatch.lap());
-        }
+        }//+QuadraticWithCalipers
         else if (description.equals("ThreeSumQuadrithmic")){
             Stopwatch stopwatch=new Stopwatch();
             new ThreeSumQuadrithmic(ints).getTriples();
             System.out.println(description + ":"+ stopwatch.lap());
 
         }
-        else if (description.equals("ThreeSumQuadraticWithCalipers")){
-            Stopwatch stopwatch=new Stopwatch();
-            new ThreeSumQuadraticWithCalipers(ints).getTriples();
-            System.out.println(description + ":"+ stopwatch.lap());
 
-        }else if (description.equals("ThreeSumCubic")){
+        else if (description.equals("ThreeSumCubic")){
             Stopwatch stopwatch=new Stopwatch();
             new ThreeSumCubic(ints).getTriples();
             System.out.println(description + ":"+ stopwatch.lap());
