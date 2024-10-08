@@ -57,11 +57,6 @@ public class ThreeSumBenchmark {
             System.out.println(description + ":"+ stopwatch.lap());
         }
 
-
-
-
-
-
 //throw new RuntimeException("implementation missing");
     }
 

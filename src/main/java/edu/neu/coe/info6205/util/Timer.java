@@ -75,12 +75,11 @@ public class Timer {
                 postFunction.accept(result);
             }
         }
-
         double meanLapTime = meanLapTime();
         resume();
         return meanLapTime;
-
         // END SOLUTION
+
     }
 
     /**
