@@ -20,13 +20,27 @@ public class Main {
         processArgs(args);
         System.out.println("Degree of parallelism: " + ForkJoinPool.getCommonPoolParallelism());
         Random random = new Random();
+
         int[] array = new int[2000000];
+        //int[] array = new int[5000000];
+        //int[] array = new int[8000000];
+
+
         ArrayList<Long> timeList = new ArrayList<>();
-        for (int j = 50; j < 100; j++) {
-            ParSort.cutoff = 10000 * (j + 1);
+
+
+        //to check different thread count
+        for (int n=2;n<=16;n=n*2){
+            for (int j = 1; j <= 10; j++) {
+
+//        for (int j = 50; j < 100; j++) {
+            ParSort.cutoff = array.length/j;
+            //ParSort.cutoff = 20000 * (j + 1);
             // for (int i = 0; i < array.length; i++) array[i] = random.nextInt(10000000);
+
             long time;
             long startTime = System.currentTimeMillis();
+
             for (int t = 0; t < 10; t++) {
                 for (int i = 0; i < array.length; i++) array[i] = random.nextInt(10000000);
                 ParSort.sort(array, 0, array.length);
@@ -36,9 +50,11 @@ public class Main {
             timeList.add(time);
 
 
+            System.out.println("Thread Count " + n);
             System.out.println("cutoff：" + (ParSort.cutoff) + "\t\t10times Time:" + time + "ms");
 
         }
+    }
         try {
             FileOutputStream fis = new FileOutputStream("./src/result.csv");
             OutputStreamWriter isr = new OutputStreamWriter(fis);
