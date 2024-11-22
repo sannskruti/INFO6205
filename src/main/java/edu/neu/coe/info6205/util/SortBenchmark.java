@@ -83,6 +83,9 @@ public class SortBenchmark {
             runIntegerBucketSort(n);
         if (isConfigBenchmarkIntegerSorter("quicksort"))
             runIntegerQuickSort(n);
+        if (isConfigBenchmarkIntegerSorter("heapsort"))
+            runIntegerHeapSort(n);
+
     }
 
     public void sortLocalDateTimes(final int n, Config config) throws IOException {
@@ -256,6 +259,16 @@ public class SortBenchmark {
         int runs = config.getInt(BENCHMARKINTEGERSORTERS, "runs", 1000);
         runIntegerSortBenchmark(numbers, N, runs, sorter, sorter::preProcess, timeLoggersLinearithmic);
     }
+
+    private void runIntegerHeapSort(int N) {
+        SortWithHelper<Integer> sorter = new HeapSort<>(N, config);
+        Integer[] numbers = sorter.getHelper().random(Integer.class, Random::nextInt);
+        int runs = config.getInt(BENCHMARKINTEGERSORTERS, "runs", 1000);
+        runIntegerSortBenchmark(numbers, N, runs, sorter, sorter::preProcess, timeLoggersLinearithmic);
+    }
+
+
+
 
 
     private void sortStrings(Stream<Long> wordCounts) {
